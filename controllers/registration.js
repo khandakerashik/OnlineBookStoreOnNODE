@@ -12,15 +12,16 @@ router.post('/', function(request, response){
 		username: request.body.username,
 		password: request.body.password
 	};
-
-	// userModel.validate(user, function(status){
-	// 	if(status){
-	// 		response.cookie('username', request.body.username);
-	// 		response.redirect('/home');
-	// 	}else{
-	// 		response.send('invalid username/password');		
-	// 	}
-	// });
+router.post('/registration', function(request, response){
+    
+        userModel.insert(user, function(status){	
+            if(status){
+                response.redirect("/registration");
+            }else{
+                response.redirect("/login");
+            }
+        });
+    });
 
 });
 
