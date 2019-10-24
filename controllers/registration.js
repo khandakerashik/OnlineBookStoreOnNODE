@@ -1,5 +1,5 @@
 var express = require('express');
-//var userModel = require('./../models/user-model');
+var userModel = require('./../models/user-model');
 var router = express.Router();
 
 router.get('/', function(request, response){
@@ -7,22 +7,24 @@ router.get('/', function(request, response){
 });
 
 router.post('/', function(request, response){
-	
-	var user = {
-		username: request.body.username,
-		password: request.body.password
-	};
-router.post('/registration', function(request, response){
+
+    var user = {
+            name: request.body.name,
+            username: request.body.username,
+            password: request.body.password,
+            mobile:  request.body.mobile,
+            gender:request.body.gender,
+            usertype:request.body.usertype
+        };
+    
     
         userModel.insert(user, function(status){	
             if(status){
-                response.redirect("/registration");
+                //response.redirect("/login");
             }else{
-                response.redirect("/login");
+                response.redirect("/registration");	
             }
         });
     });
-
-});
 
 module.exports = router;
