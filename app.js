@@ -9,6 +9,7 @@ var login = require('./controllers/login');
 //var user = require('./controllers/user');
 //var logout = require('./controllers/logout');
 var registration = require('./controllers/registration');
+var adminpanel = require('./controllers/adminpanel');
 var app = express();
 
 
@@ -25,6 +26,7 @@ app.use('/login', login);
 //app.use('/user', user);
 //app.use('/logout', logout);
 app.use('/registration', registration);
+app.use('/adminpanel', adminpanel);
 
 
 //ROUTER
