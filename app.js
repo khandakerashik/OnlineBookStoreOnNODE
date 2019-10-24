@@ -5,8 +5,6 @@ var expSession = require('express-session');
 var cookieParser = require('cookie-parser');
 var ejs = require('ejs');
 var login = require('./controllers/login');
-//var home = require('./controllers/home');
-//var user = require('./controllers/user');
 var logout = require('./controllers/logout');
 var registration = require('./controllers/registration');
 var adminpanel = require('./controllers/adminpanel');
@@ -20,10 +18,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expSession({secret:'my top secret value', saveUninitialized:true, resave: false}));
 app.use(cookieParser());
-//app.use('/abc', express.static('xyz'))
 app.use('/login', login);
-//app.use('/home', home);
-//app.use('/user', user);
 app.use('/logout', logout);
 app.use('/registration', registration);
 app.use('/adminpanel', adminpanel);
@@ -31,16 +26,8 @@ app.use('/adminpanel', adminpanel);
 
 //ROUTER
 app.get('/', function(request, response){
-	response.send('index page!');
+	response.send('Enter a valid URL!');
 });
-
-// app.get('/test/your/:name/:id', function(request, response){
-// 	var id = request.params.id;
-// 	var name = request.params.name;
-// 	response.send(id+" "+name);
-
-// });
-
 
 //SERVER STARTUP
 app.listen(3000, function(){
