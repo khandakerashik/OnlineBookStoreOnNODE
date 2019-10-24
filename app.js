@@ -7,7 +7,7 @@ var ejs = require('ejs');
 var login = require('./controllers/login');
 //var home = require('./controllers/home');
 //var user = require('./controllers/user');
-//var logout = require('./controllers/logout');
+var logout = require('./controllers/logout');
 var registration = require('./controllers/registration');
 var adminpanel = require('./controllers/adminpanel');
 var app = express();
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use('/login', login);
 //app.use('/home', home);
 //app.use('/user', user);
-//app.use('/logout', logout);
+app.use('/logout', logout);
 app.use('/registration', registration);
 app.use('/adminpanel', adminpanel);
 

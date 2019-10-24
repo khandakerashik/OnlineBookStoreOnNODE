@@ -6,6 +6,9 @@ router.get('/', function(request, response){
 	response.render('adminpanel/index');
 });
 
+router.get('/index', function(request, response){
+	response.render('adminpanel/index');
+});
 // router.get('/add', function(request, response){
 // 	response.render('adminpanel/add');
 // });
@@ -24,6 +27,23 @@ router.get('/deletebook', function(request, response){
 router.get('/bookdetails', function(request, response){
 	response.render('adminpanel/bookdetails');
 });
+
+router.get('/customerdetails', function(request, response){
+	response.render('adminpanel/customerdetails');
+});
+
+router.get('/addcustomer', function(request, response){
+	response.render('adminpanel/addcustomer');
+});
+
+router.get('/deletecustomer', function(request, response){
+	response.render('adminpanel/deletecustomer');
+});
+
+router.get('/editcustomer', function(request, response){
+	response.render('adminpanel/editcustomer');
+});
+
 
 router.post('/', function(request, response){
 	
