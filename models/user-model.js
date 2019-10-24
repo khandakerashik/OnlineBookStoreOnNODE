@@ -13,12 +13,23 @@ module.exports = {
 				}
 			});
 	},
+	getByusername:function(username, callback){
+
+			var sql = "select * from user where username=?";
+			db.getResults(sql, [username], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+	},
 	validate: function(user, callback){
 		var sql ="select * from user where username=? and password=?";
 		db.getResults(sql, [user.username, user.password], function(result){
 
 			if(result.length > 0){
-				callback(result);
+				callback(true);
 			}else{
 				callback(false);
 			}
@@ -38,7 +49,7 @@ module.exports = {
 	},
 	insert: function(user, callback){
 
-		var sql ="insert into user values('', ?, ?, ?, ?, ?, ?)";
+		var sql ="insert into user values('', ?, ?)";
 		db.execute(sql, [user.username, user.password], function(status){
 			callback(status);
 		});
@@ -57,3 +68,6 @@ module.exports = {
 		});
 	}
 }
+
+
+

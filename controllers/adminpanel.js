@@ -1,5 +1,5 @@
 var express = require('express');
-//var userModel = require('./../models/user-model');
+var userModel = require('./../models/user-model');
 var router = express.Router();
 
 router.get('/', function(request, response){
@@ -44,24 +44,33 @@ router.get('/editcustomer', function(request, response){
 	response.render('adminpanel/editcustomer');
 });
 
+router.get('/adminprofile', function(request, response){
 
+	var username=request.cookies['username'];
+	 
 
-router.post('/', function(request, response){
+	userModel.getByusername(username, function(result){
 	
-	var user = {
-		username: request.body.username,
-		password: request.body.password
-	};
-
-	// userModel.validate(user, function(status){
-	// 	if(status){
-	// 		response.cookie('username', request.body.username);
-	// 		response.redirect('/home');
-	// 	}else{
-	// 		response.send('invalid username/password');		
-	// 	}
-	// });
-
+	response.render('adminpanel/adminprofile', result);
 });
+});
+
+// router.post('/', function(request, response){
+	
+// 	var user = {
+// 		username: request.body.username,
+// 		password: request.body.password
+// 	};
+
+// 	// userModel.validate(user, function(status){
+// 	// 	if(status){
+// 	// 		response.cookie('username', request.body.username);
+// 	// 		response.redirect('/home');
+// 	// 	}else{
+// 	// 		response.send('invalid username/password');		
+// 	// 	}
+// 	// });
+
+// });
 
 module.exports = router;
