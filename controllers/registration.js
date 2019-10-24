@@ -20,7 +20,7 @@ router.post('/', function(request, response){
     
         userModel.insert(user, function(status){	
             if(status){
-                //response.redirect("/login");
+                response.redirect("/login");
             }else{
                 response.redirect("/registration");	
             }
